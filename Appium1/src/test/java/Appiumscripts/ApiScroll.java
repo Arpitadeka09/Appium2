@@ -4,17 +4,19 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
+
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import io.appium.java_client.android.AndroidDriver;
 
-public class Apidemos {
+public class ApiScroll {
 	
-	
-	public static void main(String[] agrs) throws MalformedURLException {
+public static void main(String[] agrs) throws MalformedURLException {
+	     AndroidDriver driver;
 		
-		DesiredCapabilities dc=new DesiredCapabilities();
+		 DesiredCapabilities dc=new DesiredCapabilities();
 		
 		 dc.setCapability("deviceName","Samsung");  
 		  dc.setCapability("automationName","appium");
@@ -32,20 +34,23 @@ public class Apidemos {
 		  AndroidDriver driver = new AndroidDriver(url, dc);
 		  driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 		  
-		  driver.findElement(By.xpath("//android.widget.TextView[@content-desc=\"Views\"]")).click();
-		  
-		  driver.findElement(By.xpath("//android.widget.TextView[@content-desc=\"Controls\"]")).click();
-		  
-		  driver.findElement(By.xpath("//android.widget.TextView[@content-desc=\"2. Dark Theme\"]")).click();
-		  
-		  driver.findElement(By.id("io.appium.android.apis:id/edit")).sendKeys("Arpita");
-		  
-		  driver.findElementByAccessibilityId("Checkbox 1").click();
-		  driver.findElementByAccessibilityId("RadioButton 2").click();
-		  
-		  
-		  
-		  
+		  WebElement views=driver.findElementByAccessibilityId("views");
+			
+			views.click();
+			
+		   scrollToElement(driver,"text","search view");
+          driver.findElement(By.xpath("//android.widget.TextView[@content-desc='Search View']")).click();
+          
+          public static void scrollToElement(AndroidDriver driver,String an,String av)
+          {
+        driver.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView("+an+"(\""+av+"\"))");
+        }
+
+
+	
+
 	}
+
+		
 
 }
