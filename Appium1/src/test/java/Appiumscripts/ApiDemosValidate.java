@@ -60,22 +60,24 @@ public static void main(String[] agrs) throws MalformedURLException, Throwable {
 			}
 
 			Thread.sleep(1000);
-			driver.findElement(By.xpath("//android.widget.CheckBox[@content-desc=\"Checkbox 1\"]")).click();
+			driver.findElement(By.id("io.appium.android.apis:id/check1")).click();
 
 
 			Thread.sleep(1000);
-			WebElement checkbox=driver.findElement(By.xpath("//android.widget.CheckBox[@content-desc=\"Checkbox 1\"]"));
+			WebElement checkbox=driver.findElement(By.id("io.appium.android.apis:id/check1"));
 			Thread.sleep(1000);
 			
 			
 			if(!checkbox.isSelected()) {
-				driver.findElement(By.xpath("//android.widget.CheckBox[@content-desc=\"Checkbox 1\"]")).click();
+				driver.findElement(By.id("io.appium.android.apis:id/check1")).click();
 
 				System.out.println("checkbox is Selected");
 			}else 
-			{System.out.println("checkbox is not selected");}
+			{
+				System.out.println("checkbox is not selected");
+			}
 
-			driver.findElement(By.xpath("//android.widget.CheckBox[@content-desc=\"Checkbox 1\"]")).click();
+			driver.findElement(By.id("io.appium.android.apis:id/radio1")).click();
 
 
 			Thread.sleep(1000);
@@ -88,7 +90,9 @@ public static void main(String[] agrs) throws MalformedURLException, Throwable {
 
 				System.out.println("radio is Selected");
 			}else 
-			{System.out.println("radio is not selected");}
+			{
+				System.out.println("radio is not selected");
+			}
 
 			driver.hideKeyboard();
 			Thread.sleep(1000);
